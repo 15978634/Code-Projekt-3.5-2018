@@ -13,6 +13,9 @@ public class Board {
         checkAllowedCells();
         return this.allowedCells;
     }
+    public byte[][] getCells(){
+        return this.cells;
+    }
     public byte[][] getFields(){
         return this.fields;
     }
@@ -24,7 +27,7 @@ public class Board {
         this.cells = cells;
         this.activeField = activeField;
     }
-    public boolean checkUsefulPairs(byte xcoord, byte ycoord, byte player){
+    public boolean checkUsefulPairs(byte xcoord, byte ycoord, byte player, byte[][] cells){
         /*
         only checks for pairs in useful locations for rows:
         not:    but:    also: does work
@@ -181,7 +184,12 @@ public class Board {
         }
         return false;
     }
-    public boolean checkRows(byte xcoord, byte ycoord, byte player){        //checks if a win for said player in this field is possible
+    public boolean checkUsefulPairs(byte x, byte y, byte p){                            //Override for using Attribute for cells[][]
+        boolean ret =checkUsefulPairs(x,y,p,this.cells);
+        return ret;
+    }
+
+    public boolean checkRows(byte xcoord, byte ycoord, byte player, byte[][] cells){        //checks if a win for said player in this field is possible
                                                                             //player x = 1 player o = 2
         int cellNumber;
         cellNumber = xcoord%3+(ycoord%3)*3;
@@ -329,6 +337,10 @@ public class Board {
                 }
         }
         return false;
+    }
+    public boolean checkRows(byte x, byte y, byte p){                                   //Override for using Attribute for cells[][]
+        boolean ret =checkRows(x,y,p,this.cells);
+        return ret;
     }
 
     public void eliminateWonFields(){                   //Eliminates moves that would play in any field that is already won

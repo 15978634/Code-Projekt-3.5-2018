@@ -19,7 +19,9 @@ private static boolean GameRunning;
         url = "127.0.0.1";
         connectToServer(url);
         board = new Board();
+        protocol = new Protocol();
 
+        startGame();
     }
     private static void connectToServer(String url){
         try{
@@ -32,7 +34,23 @@ private static boolean GameRunning;
     private static void startGame(){
         GameRunning = true;
         while(GameRunning){
+            incomingMessage = con.receiveMessage();
+            if(protocol.getId()=='I'){
+                System.out.println("Informations received!");
+                protocol.setByteArray(incomingMessage);
+                board.update(protocol.getBig_board(),protocol.getCells(),protocol.getActive_field());
+            }
+            if(protocol.getId()=='E'){
+                System.out.println("Error message from Server received!");
+            }
+            if(protocol.getId()=='W'){
+                System.out.println("Win message received");
+            }
 
+            calculateTurn();
         }
+    }
+    private static void calculateTurn(){
+
     }
 }
