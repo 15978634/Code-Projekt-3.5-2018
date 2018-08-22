@@ -355,13 +355,13 @@ public class Board {
         }
 
     }
-    public void checkAllowedCells(byte[][] cells){
+    public void checkAllowedCells(byte[][] cells, byte[]activeField){
         //Search for active cells in cells[] by looking at activeField
         if (this.activeField[0]!=3){                    //the field isn`t won yet//this array is true for every cell the player is allowed to play
             for (int i1 = 0; i1<=2;i1++) {
                 for (int i2 = 0; i2 <= 2; i2++) {
                     if(cells[i1][i2]==0){               //checking whether cell is already occupied
-                        this.allowedCells[this.activeField[0] * 3 + i1][this.activeField[1] * 3 + i2] = true;
+                        allowedCells[activeField[0] * 3 + i1][activeField[1] * 3 + i2] = true;
                     }
                 }
             }
@@ -377,7 +377,7 @@ public class Board {
         }
     }
     public void checkAllowedCells(){
-        checkAllowedCells(this.cells);
+        checkAllowedCells(this.cells,this.activeField);
     }
 }
 
