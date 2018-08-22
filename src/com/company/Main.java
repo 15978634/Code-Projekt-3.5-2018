@@ -36,9 +36,10 @@ private static boolean GameRunning;
         while(GameRunning){
             incomingMessage = con.receiveMessage();
             if(protocol.getId()=='I'){
-                System.out.println("Informations received!");
+                System.out.println("Information received!");
                 protocol.setByteArray(incomingMessage);
                 board.update(protocol.getBig_board(),protocol.getCells(),protocol.getActive_field());
+
             }
             if(protocol.getId()=='E'){
                 System.out.println("Error message from Server received!");
@@ -46,7 +47,6 @@ private static boolean GameRunning;
             if(protocol.getId()=='W'){
                 System.out.println("Win message received");
             }
-
             calculateTurn();
         }
     }
