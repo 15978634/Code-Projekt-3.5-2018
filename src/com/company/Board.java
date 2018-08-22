@@ -1,13 +1,17 @@
 package com.company;
 
+import java.util.Arrays;
+
 public class Board {
-    private byte[][] fields;
+    private byte[][] fields;                                    //Gibt an welches feld wem gehört
     private byte[][] cells;
     private double [][] cellValues;
     private byte[] activeField;
     private boolean[][] allowedCells = new boolean[9][9];
 
     public boolean[][] getAllowedCells(){
+        Arrays.fill(allowedCells,false);
+        checkAllowedCells();
         return allowedCells;
     }
 
@@ -16,8 +20,155 @@ public class Board {
         this.activeField = activeField;
         this.fields = fields;
     }
-    public void checkRows(byte[][] coordinates, byte player){        //checks if a win for said player in this field is possible
+
+    public boolean checkRows(byte xcoord, byte ycoord, byte player){        //checks if a win for said player in this field is possible
+                                                                            //player x = 1 player o = 2
         int cellNumber;
+        cellNumber = xcoord%3+(ycoord%3)*3;
+        switch (cellNumber){
+            case 0:
+                if((cells[xcoord+1][ycoord]== player) && (cells[xcoord+2][ycoord] == player)){
+                    return true;
+                }
+                else{
+                    if((cells[xcoord][ycoord+1]== player)&&(cells[xcoord][ycoord+2]==player)){
+                        return true;
+                    }
+                    else {
+                        if((cells[xcoord+1][ycoord+1]== player)&&(cells[xcoord+2][ycoord+2]==player)){
+                            return true;
+                        }
+                        else {
+                            return false;
+                        }
+                    }
+
+                }
+            case 1:
+                if((cells[xcoord-1][ycoord]== player) && (cells[xcoord+1][ycoord] == player)){
+                    return true;
+                }
+                else{
+                    if((cells[xcoord][ycoord+1]== player)&&(cells[xcoord][ycoord+2]==player)){
+                        return true;
+                    }
+                        else {
+                            return false;
+                        }
+                }
+            case 2:
+                if((cells[xcoord-1][ycoord]== player) && (cells[xcoord-2][ycoord] == player)){
+                    return true;
+                }
+                else{
+                    if((cells[xcoord][ycoord+1]== player)&&(cells[xcoord][ycoord+2]==player)){
+                        return true;
+                    }
+                    else {
+                        if((cells[xcoord-1][ycoord+1]== player)&&(cells[xcoord-2][ycoord+2]==player)){
+                            return true;
+                        }
+                        else {
+                            return false;
+                        }
+                    }
+
+                }
+            case 3:
+                if((cells[xcoord+1][ycoord]== player) && (cells[xcoord+2][ycoord] == player)){
+                    return true;
+                }
+                else{
+                    if((cells[xcoord][ycoord+1]== player)&&(cells[xcoord][ycoord-1]==player)){
+                        return true;
+                    }
+                    else {
+                        return false;
+                    }
+                }
+            case 4:
+                if((cells[xcoord-1][ycoord]== player) && (cells[xcoord+1][ycoord] == player)){
+                    return true;
+                }
+                else{
+                    if((cells[xcoord-1][ycoord]== player)&&(cells[xcoord+1][ycoord]==player)){
+                        return true;
+                    }
+                    else {
+                        if((cells[xcoord-1][ycoord-1]== player)&&(cells[xcoord+1][ycoord+1]==player)){
+                            return true;
+                        }
+                        else {
+                            if((cells[xcoord+1][ycoord-1]== player)&&(cells[xcoord-1][ycoord+1]==player)){
+                                return true;
+                            }
+                            else {
+                                return false;
+                            }
+                        }
+                    }
+
+                }
+            case 5:
+                if((cells[xcoord][ycoord-1]== player) && (cells[xcoord][ycoord+1] == player)){
+                    return true;
+                }
+                else{
+                    if((cells[xcoord-1][ycoord]== player)&&(cells[xcoord-2][ycoord]==player)){
+                        return true;
+                    }
+                    else {
+                        return false;
+                    }
+                }
+            case 6:
+                if((cells[xcoord+1][ycoord]== player) && (cells[xcoord+2][ycoord] == player)){
+                    return true;
+                }
+                else{
+                    if((cells[xcoord][ycoord-1]== player)&&(cells[xcoord][ycoord-2]==player)){
+                        return true;
+                    }
+                    else {
+                        if((cells[xcoord+1][ycoord-1]== player)&&(cells[xcoord+2][ycoord-2]==player)){
+                            return true;
+                        }
+                        else {
+                            return false;
+                        }
+                    }
+                }
+            case 7:
+                if((cells[xcoord-1][ycoord-1]== player) && (cells[xcoord+1][ycoord] == player)){
+                    return true;
+                }
+                else{
+                    if((cells[xcoord][ycoord-1]== player)&&(cells[xcoord][ycoord-2]==player)){
+                        return true;
+                    }
+                    else {
+                        return false;
+                    }
+                }
+            case 8:
+                if((cells[xcoord-1][ycoord]== player) && (cells[xcoord-2][ycoord] == player)){
+                    return true;
+                }
+                else{
+                    if((cells[xcoord][ycoord-1]== player)&&(cells[xcoord][ycoord-2]==player)){
+                        return true;
+                    }
+                    else {
+                        if((cells[xcoord-1][ycoord-1]== player)&&(cells[xcoord-2][ycoord-2]==player)){
+                            return true;
+                        }
+                        else {
+                            return false;
+                        }
+                    }
+                }
+        }
+        return false;
     }
 
     public void eliminateWonFields(){                   //Eliminates moves that would play in any field that is already won
