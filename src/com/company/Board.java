@@ -5,7 +5,6 @@ import java.util.Arrays;
 public class Board {
     private byte[][] fields;                                    //Gibt an welches feld wem gehört
     private byte[][] cells;
-    private double [][] cellValues;
     private byte[] activeField;
     private boolean[][] allowedCells = new boolean[9][9];
 
