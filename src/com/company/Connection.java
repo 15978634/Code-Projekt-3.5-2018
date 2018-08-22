@@ -51,6 +51,5 @@ public class Connection {
         }
         System.out.println("Receiving of message failed.");
         return null;
-
     }
 }
