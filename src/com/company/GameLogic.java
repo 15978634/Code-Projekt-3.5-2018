@@ -13,6 +13,7 @@ public class GameLogic {
 
     private double[][] values = new double[9][9];
 
+
     public GameLogic(Board b, byte p){
         this.board = b;
         this.player = p;

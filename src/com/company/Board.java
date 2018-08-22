@@ -5,7 +5,6 @@ import java.util.Arrays;
 public class Board {
     private byte[][] fields;                                    //Gibt an welches feld wem gehört
     private byte[][] cells;
-    private double [][] cellValues;
     private byte[] activeField;
     private boolean[][] allowedCells = new boolean[9][9];
 
@@ -18,10 +17,12 @@ public class Board {
         return this.fields;
     }
 
-    public Board(byte[][] cells, byte[] activeField, byte[][] fields){
+    public Board(){
+    }
+    public void update(byte[][] fields, byte[][] cells, byte[] activeField){
+        this.fields = fields;
         this.cells = cells;
         this.activeField = activeField;
-        this.fields = fields;
     }
     public boolean checkUsefulPairs(byte xcoord, byte ycoord, byte player){
         /*
@@ -342,7 +343,7 @@ public class Board {
         }
 
     }
-    public void checkAllowedCells(){
+    public void checkAllowedCells(byte[][] cells){
         //Search for active cells in cells[] by looking at activeField
         if (this.activeField[0]!=3){                    //the field isn`t won yet//this array is true for every cell the player is allowed to play
             for (int i1 = 0; i1<=2;i1++) {
@@ -363,6 +364,8 @@ public class Board {
             }
         }
     }
-
+    public void checkAllowedCells(){
+        checkAllowedCells(this.cells);
+    }
 }
 
