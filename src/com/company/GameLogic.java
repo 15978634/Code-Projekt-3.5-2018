@@ -2,14 +2,12 @@ package com.company;
 
 public class GameLogic {
 
-    Board board;
+    private Board board;
     byte player;
     byte enemyPlayer;
     boolean[][] updating_ac;    // updated allowed cells
 
     int[][] values = new int[9][9];
-    private Board board;
-    private Board ;
 
     public GameLogic(Board b, byte p){
         this.board = b;
