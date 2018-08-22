@@ -23,9 +23,9 @@ public class Board {
         this.activeField = activeField;
         this.fields = fields;
     }
-    public boolean checkUsefullPairs(byte xcoord, byte ycoord, byte player){
+    public boolean checkUsefulPairs(byte xcoord, byte ycoord, byte player){
         /*
-        only checks for pairs in usefull locations for rows:
+        only checks for pairs in useful locations for rows:
         not:    but:    also: does work
         -x-     x--     x--
         x--     -x-     ---
