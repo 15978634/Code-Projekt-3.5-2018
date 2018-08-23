@@ -7,7 +7,7 @@ private static Board board;
 private static Protocol protocol;
 private static Connection con;
 private static String incomingMessage;
-private static String leavingMessage;
+private static byte[] leavingMessage;
 private static String url;
 private static boolean GameRunning;
 
@@ -32,6 +32,8 @@ private static boolean GameRunning;
         }
     }
     private static void startGame(){
+        byte xcoord;
+        byte ycoord;
         GameRunning = true;
         while(GameRunning){
             incomingMessage = con.receiveMessage();
@@ -39,6 +41,15 @@ private static boolean GameRunning;
                 System.out.println("Information received!");
                 protocol.setByteArray(incomingMessage);
                 board.update(protocol.getBig_board(),protocol.getCells(),protocol.getActive_field());
+
+
+
+                leavingMessage[0]='M';
+                leavingMessage[1]=(byte)0xFF;
+                leavingMessage[2]= xcoord;
+                leavingMessage[3]= ycoord;
+                leavingMessage[4]= (byte)0xFF;
+                con.sendMessage(leavingMessage);
 
             }
             if(protocol.getId()=='E'){
@@ -52,8 +63,5 @@ private static boolean GameRunning;
                 GameRunning = false;
             }
         }
-    }
-    private static void calculateTurn(){
-
     }
 }
