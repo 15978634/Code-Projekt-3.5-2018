@@ -74,16 +74,13 @@ public class Protocol {
                 break;
 
             case 'W':
-                read = 2;
-                for (int c = 0; c < 2; c++){
-                    coordinates[c] = information_byte[read];
-                    read++;
-                }
+                client_id = information_byte[2];
 
                 break;
 
             case 'E':
                 error_code = information_byte[2];
+
                 break;
         }
 
