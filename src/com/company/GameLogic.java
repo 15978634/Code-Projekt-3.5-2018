@@ -1,5 +1,8 @@
 package com.company;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class GameLogic {
 
     private double _ThreeValue = 10.0d;
@@ -11,15 +14,10 @@ public class GameLogic {
     private Board board;
     private byte player;
     private byte enemyPlayer;
-    private boolean[][] updatingAllowedCells;
-    private byte[][] updatingCells;
-    private byte[][] updatingFields = new byte[3][3];
 
     private double[][] values = new double[9][9];
 
-
-    public GameLogic(Board b, byte p){
-        this.board = b;
+    public void setPlayer(byte p){
         this.player = p;
         switch (this.player){
             case 1:
@@ -31,15 +29,20 @@ public class GameLogic {
         }
     }
 
+    public GameLogic(Board b){
+        this.board = b;
+    }
+
     public double[][] getValues(){
+        UpdateVariables();
         return values;
     }
 
     private void UpdateVariables(){     // update values
         boolean[][] start_ac = board.getAllowedCells();
-        updatingAllowedCells = start_ac;
-        updatingCells = board.getCells();
-        updatingFields = board.getFields();
+        boolean[][] updatingAllowedCells = start_ac;
+        byte[][] updatingCells = board.getCells();
+        byte[][] updatingFields = board.getFields();
         for (byte x = 0; x < 9; x++){
             for (byte y = 0; y < 9; y++){
                 if (start_ac[x][y]){   // cell is allowed
@@ -47,7 +50,7 @@ public class GameLogic {
                         values[x][y] = -1000.0d;
                     }
                     else {
-                        values[x][y] = WinFieldPossible_getVal(x,y, player);
+                        values[x][y] = WinFieldPossible_getVal(x,y, player, updatingAllowedCells, updatingCells, updatingFields);
                     }
                 }
                 else {                  // cell isn't allowed
@@ -56,7 +59,7 @@ public class GameLogic {
             }
         }
     }
-    private int WinFieldPossible_getVal(byte start_xcoord, byte start_ycoord ,byte p){   // update values
+    private int WinFieldPossible_getVal(byte start_xcoord, byte start_ycoord ,byte p, boolean[][] updatingAllowedCells, byte[][] updatingCells, byte[][] updatingFields){// update values
         // player bytes:
         // 1 -> x
         // 2 -> o
@@ -67,7 +70,6 @@ public class GameLogic {
         nextActiveField[0] = (byte)(start_xcoord % 3);
         nextActiveField[1] = (byte)(start_ycoord % 3);
 
-        // es wird terminated, wenn die Reihe nicht auf dem originalem Brett gewonnen werden kann
         if (updatingFields[start_xcoord % 3][start_ycoord % 3] == 0){    // if field isn't won by anybody
             if (board.checkRows(start_xcoord, start_ycoord, p)){
                 if (p == this.player){
@@ -87,24 +89,31 @@ public class GameLogic {
                 }
             }
 
-            // update updatingAllowedCells based on updatingCells, updatingFields and nextActiveField
+
             updatingAllowedCells = board.checkAllowedCells(updatingCells, nextActiveField);
 
+            double[] maxVal = new double[81];
+            int counter = 0;
             for (byte x = 0; x < 9; x++){
                 for (byte y = 0; y < 9; y++){
                     if (updatingAllowedCells[x][y]){   // cell is allowed
                         if (updatingFields[x%3][y%3] == this.player || updatingFields[x%3][y%3] == this.enemyPlayer){
-                            values[x][y] += -1000.0d;
+                            maxVal[counter] = -1000.0d;
                         }
                         else {
-                            values[x][y] += WinFieldPossible_getVal(x,y, player);
+                            maxVal[counter] = WinFieldPossible_getVal(x,y, player, updatingAllowedCells, updatingCells, updatingFields);
                         }
                     }
                     else {                  // cell isn't allowed
-                        values[x][y] += -1000.0d;
+                        maxVal[counter] = -1000.0d;
                     }
+                    counter++;
                 }
             }
+            Arrays.sort(maxVal);
+
+
+            totalVal += maxVal[0];
 
             return totalVal;
         }
