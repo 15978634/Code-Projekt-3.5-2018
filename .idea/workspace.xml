@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="93f55c93-b666-4694-9671-7e57918372d0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/com/company/GameLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/GameLogic.java" afterDir="false" />
-    </list>
+    <list default="true" id="93f55c93-b666-4694-9671-7e57918372d0" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -48,7 +46,7 @@
     <session id="-1543649099">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="12" />
+          <entry key="project.closed" value="13" />
           <entry key="project.open.time.4" value="1" />
           <entry key="project.open.time.5" value="6" />
           <entry key="project.open.time.6" value="3" />
@@ -83,8 +81,12 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/company/GameLogic.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-102">
-              <caret line="50" column="21" lean-forward="true" selection-start-line="50" selection-start-column="21" selection-end-line="50" selection-end-column="21" />
+            <state relative-caret-position="483">
+              <caret line="98" column="30" lean-forward="true" selection-start-line="98" selection-start-column="30" selection-end-line="98" selection-end-column="30" />
+              <folding>
+                <element signature="e#813#814#0" expanded="true" />
+                <element signature="e#842#843#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -275,8 +277,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/GameLogic.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-102">
-          <caret line="50" column="21" lean-forward="true" selection-start-line="50" selection-start-column="21" selection-end-line="50" selection-end-column="21" />
+        <state relative-caret-position="483">
+          <caret line="98" column="30" lean-forward="true" selection-start-line="98" selection-start-column="30" selection-end-line="98" selection-end-column="30" />
+          <folding>
+            <element signature="e#813#814#0" expanded="true" />
+            <element signature="e#842#843#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
