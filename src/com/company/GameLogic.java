@@ -50,7 +50,7 @@ public class GameLogic {
                         values[x][y] = -1000.0d;
                     }
                     else {
-                        values[x][y] = WinFieldPossible_getVal(x,y, player, updatingAllowedCells, updatingCells, updatingFields);
+                        values[x][y] = WinFieldPossible_getVal(x,y, this.player, updatingAllowedCells, updatingCells, updatingFields);
                     }
                 }
                 else {                  // cell isn't allowed
@@ -79,6 +79,15 @@ public class GameLogic {
                     totalVal -= _ThreeValue;
                 }
                 updatingFields[start_xcoord % 3][start_ycoord % 3] = p;
+
+                if (board.checkFieldRows(start_xcoord % 3, start_ycoord % 3, updatingFields)){
+                    if (p == this.player){
+                        totalVal += 500000.0d;
+                    }
+                    else if (p == this.enemyPlayer){
+                        totalVal -= 500000.0d;
+                    }
+                }
             }
             else if (board.checkUsefulPairs(start_xcoord, start_ycoord, p)){
                 if (p == this.player){
@@ -97,11 +106,17 @@ public class GameLogic {
             for (byte x = 0; x < 9; x++){
                 for (byte y = 0; y < 9; y++){
                     if (updatingAllowedCells[x][y]){   // cell is allowed
-                        if (updatingFields[x%3][y%3] == this.player || updatingFields[x%3][y%3] == this.enemyPlayer){
+                        if (updatingFields[x%3][y%3] == this.player || updatingFields[x%3][y%3] == this.enemyPlayer){       // check whether the field where i place my next x/o is already won
                             maxVal[counter] = -1000.0d;
                         }
                         else {
-                            maxVal[counter] = WinFieldPossible_getVal(x,y, player, updatingAllowedCells, updatingCells, updatingFields);
+                            /*if (p == this.player){                                                                                                // uncomment here if code doesn't work
+                                maxVal[counter] = WinFieldPossible_getVal(x,y, this.enemyPlayer, updatingAllowedCells, updatingCells, updatingFields);
+                            }
+                            else if (p == this.enemyPlayer){
+                                maxVal[counter] = WinFieldPossible_getVal(x,y, this.player, updatingAllowedCells, updatingCells, updatingFields);
+                            }*/
+                            maxVal[counter] = WinFieldPossible_getVal(x,y, this.enemyPlayer, updatingAllowedCells, updatingCells, updatingFields);  // comment here if code doesn't work
                         }
                     }
                     else {                  // cell isn't allowed
@@ -113,7 +128,12 @@ public class GameLogic {
             Arrays.sort(maxVal);
 
 
-            totalVal += maxVal[0];
+            if (p == this.player){
+                totalVal += maxVal[0];
+            }
+            else if (p == this.enemyPlayer){
+                totalVal -= maxVal[0];
+            }
 
             return totalVal;
         }
