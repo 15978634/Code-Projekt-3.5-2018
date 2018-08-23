@@ -95,7 +95,7 @@ public class GameLogic {
                     if (updatingAllowedCells[x][y]){   // cell is allowed
                         if (updatingFields[x%3][y%3] == this.player || updatingFields[x%3][y%3] == this.enemyPlayer){
                             values[x][y] = -1000.0d;
-                    }
+                        }
                         else {
                             values[x][y] = WinFieldPossible_getVal(x,y, player);
                         }
