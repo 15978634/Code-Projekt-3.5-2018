@@ -46,8 +46,11 @@ private static boolean GameRunning;
             }
             if(protocol.getId()=='W'){
                 System.out.println("Win message received");
+                System.out.print("Player: ");
+                System.out.print(protocol.getClient_id());
+                System.out.println(" won!");
+                GameRunning = false;
             }
-            calculateTurn();
         }
     }
     private static void calculateTurn(){
