@@ -41,7 +41,7 @@ public class Board {
         cellNumber = xcoord%3+(ycoord%3)*3;
         switch (cellNumber){
             case 0:
-                if((cells[xcoord+1][ycoord]== player) || (cells[xcoord+2][ycoord] == player)){
+                if(((cells[xcoord+1][ycoord]== player) && (cells[xcoord+2][ycoord]==0)) || ((cells[xcoord+2][ycoord] == player )&&(cells[xcoord+1][ycoord]== 0))){
                     return true;
                 }
                 else{
@@ -49,7 +49,7 @@ public class Board {
                         return true;
                     }
                     else {
-                        if((cells[xcoord+1][ycoord+1]== player)||(cells[xcoord+2][ycoord+2]==player)){
+                        if(((cells[xcoord+1][ycoord+1]== player)&&(cells[xcoord+2][ycoord+2]==0))||((cells[xcoord+2][ycoord+2]==player)&&(cells[xcoord+1][ycoord+1]== 0))){
                             return true;
                         }
                         else {
@@ -59,11 +59,11 @@ public class Board {
 
                 }
             case 1:
-                if((cells[xcoord-1][ycoord]== player) || (cells[xcoord+1][ycoord] == player)){
+                if(((cells[xcoord-1][ycoord]== player)&&(cells[xcoord+1][ycoord] == 0)) || ((cells[xcoord+1][ycoord] == player)&&(cells[xcoord-1][ycoord]== 0))){
                     return true;
                 }
                 else{
-                    if((cells[xcoord][ycoord+1]== player)||(cells[xcoord][ycoord+2]==player)){
+                    if(((cells[xcoord][ycoord+1]== player)&&(cells[xcoord][ycoord+2]==0))||((cells[xcoord][ycoord+2]==player)&&(cells[xcoord][ycoord+1]== 0))){
                         return true;
                     }
                     else {
@@ -71,15 +71,15 @@ public class Board {
                     }
                 }
             case 2:
-                if((cells[xcoord-1][ycoord]== player) || (cells[xcoord-2][ycoord] == player)){
+                if(((cells[xcoord-1][ycoord]== player)&&(cells[xcoord-2][ycoord] == 0)) || ((cells[xcoord-2][ycoord] == player)&&(cells[xcoord-1][ycoord]== 0))){
                     return true;
                 }
                 else{
-                    if((cells[xcoord][ycoord+1]== player)||(cells[xcoord][ycoord+2]==player)){
+                    if(((cells[xcoord][ycoord+1]== player)&&(cells[xcoord][ycoord+2]==0))||((cells[xcoord][ycoord+2]==player)&&(cells[xcoord][ycoord+1]== 0))){
                         return true;
                     }
                     else {
-                        if((cells[xcoord-1][ycoord+1]== player)||(cells[xcoord-2][ycoord+2]==player)){
+                        if(((cells[xcoord-1][ycoord+1]== player)&&(cells[xcoord-2][ycoord+2]==0))||((cells[xcoord-2][ycoord+2]==player)&&(cells[xcoord-1][ycoord+1]== 0))){
                             return true;
                         }
                         else {
@@ -89,11 +89,11 @@ public class Board {
 
                 }
             case 3:
-                if((cells[xcoord+1][ycoord]== player) || (cells[xcoord+2][ycoord] == player)){
+                if(((cells[xcoord+1][ycoord]== player)&&(cells[xcoord+2][ycoord] == 0)) || ((cells[xcoord+2][ycoord] == player)&&(cells[xcoord+1][ycoord]== 0))){
                     return true;
                 }
                 else{
-                    if((cells[xcoord][ycoord+1]== player)||(cells[xcoord][ycoord-1]==player)){
+                    if(((cells[xcoord][ycoord+1]== player)&&(cells[xcoord][ycoord-1]==0))||((cells[xcoord][ycoord-1]==player)&&(cells[xcoord][ycoord+1]== 0))){
                         return true;
                     }
                     else {
@@ -101,19 +101,19 @@ public class Board {
                     }
                 }
             case 4:
-                if((cells[xcoord-1][ycoord]== player) || (cells[xcoord+1][ycoord] == player)){
+                if(((cells[xcoord-1][ycoord]== player)&&(cells[xcoord+1][ycoord] == 0)) || (cells[xcoord+1][ycoord] == player)&&(cells[xcoord-1][ycoord]== 0)){
                     return true;
                 }
                 else{
-                    if((cells[xcoord-1][ycoord]== player)||(cells[xcoord+1][ycoord]==player)){
+                    if(((cells[xcoord-1][ycoord]== player)&&(cells[xcoord+1][ycoord]== 0))||((cells[xcoord+1][ycoord]==player)&&(cells[xcoord-1][ycoord]== 0))){
                         return true;
                     }
                     else {
-                        if((cells[xcoord-1][ycoord-1]== player)||(cells[xcoord+1][ycoord+1]==player)){
+                        if(((cells[xcoord-1][ycoord-1]== player)&&(cells[xcoord+1][ycoord+1]==0))||((cells[xcoord+1][ycoord+1]==player)&&(cells[xcoord-1][ycoord-1]== 0))){
                             return true;
                         }
                         else {
-                            if((cells[xcoord+1][ycoord-1]== player)||(cells[xcoord-1][ycoord+1]==player)){
+                            if(((cells[xcoord+1][ycoord-1]== player)&&(cells[xcoord-1][ycoord+1]==0))||((cells[xcoord-1][ycoord+1]==player)&&(cells[xcoord+1][ycoord-1]== 0))){
                                 return true;
                             }
                             else {
@@ -124,11 +124,11 @@ public class Board {
 
                 }
             case 5:
-                if((cells[xcoord][ycoord-1]== player) || (cells[xcoord][ycoord+1] == player)){
+                if(((cells[xcoord][ycoord-1]== player)&&(cells[xcoord][ycoord+1] == 0)) || ((cells[xcoord][ycoord+1] == player)&&(cells[xcoord][ycoord-1]==0))){
                     return true;
                 }
                 else{
-                    if((cells[xcoord-1][ycoord]== player)||(cells[xcoord-2][ycoord]==player)){
+                    if(((cells[xcoord-1][ycoord]== player)&&(cells[xcoord-2][ycoord]==0))||((cells[xcoord-2][ycoord]==player)&&(cells[xcoord-1][ycoord]== 0))){
                         return true;
                     }
                     else {
@@ -136,15 +136,15 @@ public class Board {
                     }
                 }
             case 6:
-                if((cells[xcoord+1][ycoord]== player) || (cells[xcoord+2][ycoord] == player)){
+                if(((cells[xcoord+1][ycoord]== player)&&(cells[xcoord+2][ycoord] == 0)) || ((cells[xcoord+2][ycoord] == player)&&(cells[xcoord+1][ycoord]== 0))){
                     return true;
                 }
                 else{
-                    if((cells[xcoord][ycoord-1]== player)||(cells[xcoord][ycoord-2]==player)){
+                    if(((cells[xcoord][ycoord-1]== player)&&(cells[xcoord][ycoord-2]==0))||((cells[xcoord][ycoord-2]==player)&&(cells[xcoord][ycoord-1]== 0))){
                         return true;
                     }
                     else {
-                        if((cells[xcoord+1][ycoord-1]== player)||(cells[xcoord+2][ycoord-2]==player)){
+                        if(((cells[xcoord+1][ycoord-1]== player)&&(cells[xcoord+2][ycoord-2]==0))||((cells[xcoord+2][ycoord-2]==player)&&(cells[xcoord+1][ycoord-1]== 0))){
                             return true;
                         }
                         else {
@@ -153,11 +153,11 @@ public class Board {
                     }
                 }
             case 7:
-                if((cells[xcoord-1][ycoord-1]== player) || (cells[xcoord+1][ycoord] == player)){
+                if(((cells[xcoord-1][ycoord-1]== player)&&(cells[xcoord+1][ycoord] == 0)) || ((cells[xcoord+1][ycoord] == player)&&(cells[xcoord-1][ycoord-1]== 0))){
                     return true;
                 }
                 else{
-                    if((cells[xcoord][ycoord-1]== player)||(cells[xcoord][ycoord-2]==player)){
+                    if(((cells[xcoord][ycoord-1]== player)&&(cells[xcoord][ycoord-2]==0))||((cells[xcoord][ycoord-2]==player)&&(cells[xcoord][ycoord-1]== 0))){
                         return true;
                     }
                     else {
@@ -165,15 +165,15 @@ public class Board {
                     }
                 }
             case 8:
-                if((cells[xcoord-1][ycoord]== player) || (cells[xcoord-2][ycoord] == player)){
+                if(((cells[xcoord-1][ycoord]== player)&&(cells[xcoord-2][ycoord] == 0)) || ((cells[xcoord-2][ycoord] == player)&&(cells[xcoord-1][ycoord]== 0))){
                     return true;
                 }
                 else{
-                    if((cells[xcoord][ycoord-1]== player)||(cells[xcoord][ycoord-2]==player)){
+                    if(((cells[xcoord][ycoord-1]== player)&&(cells[xcoord][ycoord-2]==0))||((cells[xcoord][ycoord-2]==player)&&(cells[xcoord][ycoord-1]== 0))){
                         return true;
                     }
                     else {
-                        if((cells[xcoord-1][ycoord-1]== player)||(cells[xcoord-2][ycoord-2]==player)){
+                        if(((cells[xcoord-1][ycoord-1]== player)&&(cells[xcoord-2][ycoord-2]== 0))||((cells[xcoord-2][ycoord-2]==player)&&(cells[xcoord-1][ycoord-1]== 0))){
                             return true;
                         }
                         else {
