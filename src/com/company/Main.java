@@ -6,6 +6,7 @@ public class Main {
 private static Board board;
 private static Protocol protocol;
 private static Connection con;
+private static GameLogic gameLogic;
 private static String incomingMessage;
 private static byte[] leavingMessage;
 private static String url;
@@ -20,6 +21,7 @@ private static boolean GameRunning;
         connectToServer(url);
         board = new Board();
         protocol = new Protocol();
+        gameLogic = new GameLogic(board);
 
         startGame();
     }
@@ -35,15 +37,16 @@ private static boolean GameRunning;
         byte xcoord;
         byte ycoord;
         GameRunning = true;
+        incomingMessage = con.receiveMessage();
         while(GameRunning){
             incomingMessage = con.receiveMessage();
             if(protocol.getId()=='I'){
                 System.out.println("Information received!");
                 protocol.setByteArray(incomingMessage);
                 board.update(protocol.getBig_board(),protocol.getCells(),protocol.getActive_field());
+                gameLogic.setPlayer(protocol.getClient_id());
 
-
-
+                gameLogic.getValues();
                 leavingMessage[0]='M';
                 leavingMessage[1]=(byte)0xFF;
                 leavingMessage[2]= xcoord;
