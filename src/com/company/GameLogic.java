@@ -71,6 +71,8 @@ public class GameLogic {
         nextActiveField[1] = (byte)(start_ycoord % 3);
 
         if (updatingFields[start_xcoord % 3][start_ycoord % 3] == 0){    // if field isn't won by anybody
+            // Termination conditions
+            //
             if (board.checkRows(start_xcoord, start_ycoord, p)){
                 if (p == this.player){
                     totalVal += _ThreeValue;
@@ -110,13 +112,12 @@ public class GameLogic {
                             maxVal[counter] = -1000.0d;
                         }
                         else {
-                            /*if (p == this.player){                                                                                                // uncomment here if code doesn't work
+                            if (p == this.player){
                                 maxVal[counter] = WinFieldPossible_getVal(x,y, this.enemyPlayer, updatingAllowedCells, updatingCells, updatingFields);
                             }
                             else if (p == this.enemyPlayer){
                                 maxVal[counter] = WinFieldPossible_getVal(x,y, this.player, updatingAllowedCells, updatingCells, updatingFields);
-                            }*/
-                            maxVal[counter] = WinFieldPossible_getVal(x,y, this.enemyPlayer, updatingAllowedCells, updatingCells, updatingFields);  // comment here if code doesn't work
+                            }
                         }
                     }
                     else {                  // cell isn't allowed
@@ -132,7 +133,7 @@ public class GameLogic {
                 totalVal += maxVal[0];
             }
             else if (p == this.enemyPlayer){
-                totalVal -= maxVal[0];
+                totalVal += maxVal[80];
             }
 
             return totalVal;
