@@ -30,7 +30,9 @@ public class Connection {
     //message needs to be converted to a byte array before sending
 
     public void sendMessage (byte[] msg){
-        output.print(new String(msg));
+        char[] charArray = new char[msg.length];
+        for(int i = 0; i < msg.length; i++) if(msg[i] == -1) charArray[i] = 255; else charArray[i] = (char)msg[i];
+        output.write(charArray);
         output.flush();
         System.out.println("Message sent!");
     }

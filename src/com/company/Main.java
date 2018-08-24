@@ -49,10 +49,10 @@ private static boolean GameRunning;
                 ycoord = coords[1];
                 leavingMessage = new byte[5];
                 leavingMessage[0]='M';
-                leavingMessage[1]=(byte)0xFF;
+                leavingMessage[1]=(byte)'A';
                 leavingMessage[2]= xcoord;
                 leavingMessage[3]= ycoord;
-                leavingMessage[4]= (byte)0xFF;
+                leavingMessage[4]= (byte)'A';
                 con.sendMessage(leavingMessage);
 
             }
@@ -75,11 +75,11 @@ private static boolean GameRunning;
         double highestValueYet = -1001;
         double[][] values = gameLogic.getValues();
             for(byte i = 0; i<= 8;i++){
-                for(byte ii = 0; i<=8;i++){
+                for(byte ii = 0; ii<=8;ii++){
                     if(highestValueYet<values[i][ii]){
-                        highestValueYet = values[i][ii ];
+                        highestValueYet = values[i][ii];
                         coords[0]=i;
-                        coords[1]=i;
+                        coords[1]=ii;
                     }
                 }
             }
