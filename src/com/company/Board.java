@@ -9,7 +9,7 @@ public class Board {
     private boolean[][] allowedCells = new boolean[9][9];
 
     public boolean[][] getAllowedCells(){
-        Arrays.fill(allowedCells,false);
+        for(int i = 0; i < 9; i++) for(int j = 0; j < 9; j++) allowedCells[i][j] = false;
         checkAllowedCells();
         return this.allowedCells;
     }

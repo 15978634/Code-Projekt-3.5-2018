@@ -17,7 +17,7 @@ private static boolean GameRunning;
     }
 
     public static void main(String[] args) {
-        url = "127.0.0.1";
+        url = "172.24.0.41";
         connectToServer(url);
         board = new Board();
         protocol = new Protocol();
@@ -37,28 +37,29 @@ private static boolean GameRunning;
         byte xcoord;
         byte ycoord;
         GameRunning = true;
-        incomingMessage = con.receiveMessage();
         while(GameRunning){
             incomingMessage = con.receiveMessage();
+            protocol.setByteArray(incomingMessage);
             if(protocol.getId()=='I'){
                 System.out.println("Information received!");
-                protocol.setByteArray(incomingMessage);
                 board.update(protocol.getBig_board(),protocol.getCells(),protocol.getActive_field());
                 gameLogic.setPlayer(protocol.getClient_id());
-
                 byte [] coords = Main.calculateHighestValue();
                 xcoord = coords[0];
                 ycoord = coords[1];
+                leavingMessage = new byte[5];
                 leavingMessage[0]='M';
-                leavingMessage[1]=(byte)0xFF;
+                leavingMessage[1]=(byte)'A';
                 leavingMessage[2]= xcoord;
                 leavingMessage[3]= ycoord;
-                leavingMessage[4]= (byte)0xFF;
+                leavingMessage[4]= (byte)'A';
                 con.sendMessage(leavingMessage);
 
             }
             if(protocol.getId()=='E'){
                 System.out.println("Error message from Server received!");
+                System.out.println(protocol.getError_code());
+
             }
             if(protocol.getId()=='W'){
                 System.out.println("Win message received");
@@ -73,12 +74,12 @@ private static boolean GameRunning;
         byte[] coords = new byte[2];
         double highestValueYet = -1001;
         double[][] values = gameLogic.getValues();
-            for(int i = 0; i<= 8;i++){
-                for(int ii = 0; i<=8;i++){
+            for(byte i = 0; i<= 8;i++){
+                for(byte ii = 0; ii<=8;ii++){
                     if(highestValueYet<values[i][ii]){
-                        highestValueYet = values[i][ii ];
-                        coords[0]=(byte)i;
-                        coords[1]=(byte)i;
+                        highestValueYet = values[i][ii];
+                        coords[0]=i;
+                        coords[1]=ii;
                     }
                 }
             }
