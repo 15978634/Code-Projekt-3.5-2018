@@ -46,7 +46,9 @@ private static boolean GameRunning;
                 board.update(protocol.getBig_board(),protocol.getCells(),protocol.getActive_field());
                 gameLogic.setPlayer(protocol.getClient_id());
 
-                gameLogic.getValues();
+                byte [] coords = Main.calculateHighestValue();
+                xcoord = coords[0];
+                ycoord = coords[1];
                 leavingMessage[0]='M';
                 leavingMessage[1]=(byte)0xFF;
                 leavingMessage[2]= xcoord;
@@ -66,5 +68,20 @@ private static boolean GameRunning;
                 GameRunning = false;
             }
         }
+    }
+    private static byte[] calculateHighestValue(){
+        byte[] coords = new byte[2];
+        double highestValueYet = -1001;
+        double[][] values = gameLogic.getValues();
+            for(int i = 0; i<= 8;i++){
+                for(int ii = 0; i<=8;i++){
+                    if(highestValueYet<values[i][ii]){
+                        highestValueYet = values[i][ii ];
+                        coords[0]=(byte)i;
+                        coords[1]=(byte)i;
+                    }
+                }
+            }
+        return coords;
     }
 }

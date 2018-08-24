@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="93f55c93-b666-4694-9671-7e57918372d0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/GameLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/GameLogic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Main.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -37,19 +37,19 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="7349" />
+          <entry key="java" value="7880" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="7349" />
+          <entry key="JAVA" value="7880" />
         </counts>
       </usages-collector>
     </session>
     <session id="-1543649099">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="17" />
+          <entry key="project.closed" value="18" />
           <entry key="project.open.time.4" value="1" />
           <entry key="project.open.time.5" value="8" />
           <entry key="project.open.time.6" value="4" />
@@ -81,65 +81,12 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="833">
-              <caret line="51" column="42" selection-start-line="51" selection-start-column="42" selection-end-line="51" selection-end-column="42" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/company/Protocol.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="38" column="5" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/company/Connection.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="9" selection-start-line="9" selection-end-line="9" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/company/Board.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="840">
-              <caret line="376" column="13" selection-start-line="376" selection-start-column="13" selection-end-line="376" selection-end-column="13" />
-              <folding>
-                <element signature="e#468#469#0" expanded="true" />
-                <element signature="e#501#502#0" expanded="true" />
-                <element signature="e#534#535#0" expanded="true" />
-                <element signature="e#568#569#0" expanded="true" />
-                <element signature="method#checkUsefulPairs#0;class#Board#0" />
-                <element signature="method#checkRows#0;class#Board#0" />
-                <element signature="method#eliminateWonFields#0;class#Board#0" />
-                <element signature="e#16507#16508#0" expanded="true" />
-                <element signature="e#16591#16592#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
+    <leaf>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/company/GameLogic.java">
+        <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="248">
-              <caret line="74" column="14" selection-start-line="74" selection-start-column="14" selection-end-line="74" selection-end-column="14" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="4624">
+              <caret line="272" column="61" selection-start-line="272" selection-start-column="61" selection-end-line="272" selection-end-column="61" />
             </state>
           </provider>
         </entry>
@@ -162,9 +109,10 @@
         <option value="$PROJECT_DIR$/src/com/company/Protocol.java" />
         <option value="$PROJECT_DIR$/src/com/company/Connection.java" />
         <option value="$PROJECT_DIR$/src/com/company/Protocol.java" />
+        <option value="$PROJECT_DIR$/src/com/company/GameLogic.java" />
+        <option value="$PROJECT_DIR$/src/com/company/GameLogic.java" />
+        <option value="$PROJECT_DIR$/src/com/company/Board.java" />
         <option value="$PROJECT_DIR$/src/com/company/Main.java" />
-        <option value="$PROJECT_DIR$/src/com/company/GameLogic.java" />
-        <option value="$PROJECT_DIR$/src/com/company/GameLogic.java" />
       </list>
     </option>
   </component>
@@ -179,7 +127,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -190,24 +139,22 @@
             <path>
               <item name="Code-Projekt-3.5-2018" type="b2602c69:ProjectViewProjectNode" />
               <item name="Code-Projekt-3.5-2018" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name=".idea" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Code-Projekt-3.5-2018" type="b2602c69:ProjectViewProjectNode" />
               <item name="Code-Projekt-3.5-2018" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="company" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1535036591065" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1535040725465" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -255,7 +202,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26332623" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -296,15 +243,8 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="840">
-          <caret line="241" column="61" selection-start-line="241" selection-start-column="61" selection-end-line="241" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="833">
-          <caret line="51" column="42" selection-start-line="51" selection-start-column="42" selection-end-line="51" selection-end-column="42" />
+        <state relative-caret-position="4624">
+          <caret line="272" column="61" selection-start-line="272" selection-start-column="61" selection-end-line="272" selection-end-column="61" />
         </state>
       </provider>
     </entry>
@@ -317,39 +257,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Connection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="153">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Board.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="840">
-          <caret line="376" column="13" selection-start-line="376" selection-start-column="13" selection-end-line="376" selection-end-column="13" />
-          <folding>
-            <element signature="e#468#469#0" expanded="true" />
-            <element signature="e#501#502#0" expanded="true" />
-            <element signature="e#534#535#0" expanded="true" />
-            <element signature="e#568#569#0" expanded="true" />
-            <element signature="method#checkUsefulPairs#0;class#Board#0" />
-            <element signature="method#checkRows#0;class#Board#0" />
-            <element signature="method#eliminateWonFields#0;class#Board#0" />
-            <element signature="e#16507#16508#0" expanded="true" />
-            <element signature="e#16591#16592#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="325">
+          <caret line="492" lean-forward="true" selection-start-line="492" selection-end-line="492" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/GameLogic.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="74" column="14" selection-start-line="74" selection-start-column="14" selection-end-line="74" selection-end-column="14" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="306">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="724">
+          <caret line="121" column="65" lean-forward="true" selection-start-line="121" selection-start-column="65" selection-end-line="121" selection-end-column="65" />
         </state>
       </provider>
     </entry>

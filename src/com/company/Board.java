@@ -342,6 +342,154 @@ public class Board {
         boolean ret =checkRows(x,y,p,this.cells);
         return ret;
     }
+    public boolean checkFieldRows(byte xcoord, byte ycoord, byte player, byte[][] fields){
+        //player x = 1 player o = 2
+        int cellNumber = xcoord+(ycoord)*3;
+        switch (cellNumber){
+            case 0:
+                if((fields[xcoord+1][ycoord]== player) && (fields[xcoord+2][ycoord] == player)){
+                    return true;
+                }
+                else{
+                    if((fields[xcoord][ycoord+1]== player)&&(fields[xcoord][ycoord+2]==player)){
+                        return true;
+                    }
+                    else {
+                        if((fields[xcoord+1][ycoord+1]== player)&&(fields[xcoord+2][ycoord+2]==player)){
+                            return true;
+                        }
+                        else {
+                            return false;
+                        }
+                    }
+
+                }
+            case 1:
+                if((fields[xcoord-1][ycoord]== player) && (fields[xcoord+1][ycoord] == player)){
+                    return true;
+                }
+                else{
+                    if((fields[xcoord][ycoord+1]== player)&&(fields[xcoord][ycoord+2]==player)){
+                        return true;
+                    }
+                    else {
+                        return false;
+                    }
+                }
+            case 2:
+                if((fields[xcoord-1][ycoord]== player) && (fields[xcoord-2][ycoord] == player)){
+                    return true;
+                }
+                else{
+                    if((cells[xcoord][ycoord+1]== player)&&(cells[xcoord][ycoord+2]==player)){
+                        return true;
+                    }
+                    else {
+                        if((fields[xcoord-1][ycoord+1]== player)&&(fields[xcoord-2][ycoord+2]==player)){
+                            return true;
+                        }
+                        else {
+                            return false;
+                        }
+                    }
+
+                }
+            case 3:
+                if((fields[xcoord+1][ycoord]== player) && (fields[xcoord+2][ycoord] == player)){
+                    return true;
+                }
+                else{
+                    if((fields[xcoord][ycoord+1]== player)&&(fields[xcoord][ycoord-1]==player)){
+                        return true;
+                    }
+                    else {
+                        return false;
+                    }
+                }
+            case 4:
+                if((fields[xcoord-1][ycoord]== player) && (fields[xcoord+1][ycoord] == player)){
+                    return true;
+                }
+                else{
+                    if((fields[xcoord-1][ycoord]== player)&&(fields[xcoord+1][ycoord]==player)){
+                        return true;
+                    }
+                    else {
+                        if((fields[xcoord-1][ycoord-1]== player)&&(fields[xcoord+1][ycoord+1]==player)){
+                            return true;
+                        }
+                        else {
+                            if((fields[xcoord+1][ycoord-1]== player)&&(fields[xcoord-1][ycoord+1]==player)){
+                                return true;
+                            }
+                            else {
+                                return false;
+                            }
+                        }
+                    }
+
+                }
+            case 5:
+                if((fields[xcoord][ycoord-1]== player) && (fields[xcoord][ycoord+1] == player)){
+                    return true;
+                }
+                else{
+                    if((fields[xcoord-1][ycoord]== player)&&(fields[xcoord-2][ycoord]==player)){
+                        return true;
+                    }
+                    else {
+                        return false;
+                    }
+                }
+            case 6:
+                if((fields[xcoord+1][ycoord]== player) && (fields[xcoord+2][ycoord] == player)){
+                    return true;
+                }
+                else{
+                    if((fields[xcoord][ycoord-1]== player)&&(fields[xcoord][ycoord-2]==player)){
+                        return true;
+                    }
+                    else {
+                        if((fields[xcoord+1][ycoord-1]== player)&&(fields[xcoord+2][ycoord-2]==player)){
+                            return true;
+                        }
+                        else {
+                            return false;
+                        }
+                    }
+                }
+            case 7:
+                if((fields[xcoord-1][ycoord-1]== player) && (fields[xcoord+1][ycoord] == player)){
+                    return true;
+                }
+                else{
+                    if((fields[xcoord][ycoord-1]== player)&&(fields[xcoord][ycoord-2]==player)){
+                        return true;
+                    }
+                    else {
+                        return false;
+                    }
+                }
+            case 8:
+                if((fields[xcoord-1][ycoord]== player) && (fields[xcoord-2][ycoord] == player)){
+                    return true;
+                }
+                else{
+                    if((fields[xcoord][ycoord-1]== player)&&(fields[xcoord][ycoord-2]==player)){
+                        return true;
+                    }
+                    else {
+                        if((fields[xcoord-1][ycoord-1]== player)&&(fields[xcoord-2][ycoord-2]==player)){
+                            return true;
+                        }
+                        else {
+                            return false;
+                        }
+                    }
+                }
+        }
+        return false;
+    }
 
     public void eliminateWonFields(){                   //Eliminates moves that would play in any field that is already won
                                                         //only needed if there is no active field (field already won or lost)
