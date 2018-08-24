@@ -125,7 +125,12 @@ public class GameLogic {
                 for (byte y = 0; y < 9; y++){
                     if (updatingAllowedCells[x][y]){   // cell is allowed
                         if (updatingFields[x%3][y%3] == this.player || updatingFields[x%3][y%3] == this.enemyPlayer){       // check whether the field where i place my next x/o is already won
-                            maxVal[counter] = -1000.0d;
+                            if (p == this.player){
+                                maxVal[counter] = -1000.0d;
+                            }
+                            else if (p == this.enemyPlayer){
+                                maxVal[counter] = 1000.0d;
+                            }
                         }
                         else {
                             if (p == this.player){
