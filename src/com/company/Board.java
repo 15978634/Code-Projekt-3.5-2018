@@ -505,7 +505,7 @@ public class Board {
     }
     public boolean[][] checkAllowedCells(byte[][] cells, byte[]activeField){
         //Search for active cells in cells[] by looking at activeField
-        if (this.activeField[0]!=3){                    //the field isn`t won yet//this array is true for every cell the player is allowed to play
+        if (activeField[0]!=3){                    //the field isn`t won yet//this array is true for every cell the player is allowed to play
             boolean[][] allowedCells = new boolean[9][9];
             for (int i1 = 0; i1<=2;i1++) {
                 for (int i2 = 0; i2 <= 2; i2++) {
