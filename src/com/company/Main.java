@@ -73,12 +73,12 @@ private static boolean GameRunning;
         byte[] coords = new byte[2];
         double highestValueYet = -1001;
         double[][] values = gameLogic.getValues();
-            for(int i = 0; i<= 8;i++){
-                for(int ii = 0; i<=8;i++){
+            for(byte i = 0; i<= 8;i++){
+                for(byte ii = 0; i<=8;i++){
                     if(highestValueYet<values[i][ii]){
                         highestValueYet = values[i][ii ];
-                        coords[0]=(byte)i;
-                        coords[1]=(byte)i;
+                        coords[0]=i;
+                        coords[1]=i;
                     }
                 }
             }
