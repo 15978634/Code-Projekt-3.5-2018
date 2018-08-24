@@ -15,6 +15,13 @@ public class GameLogic {
     private byte player;
     private byte enemyPlayer;
 
+    boolean[][] updatingAllowedCells = new boolean[3][3];
+    byte[][] updatingCells = new byte[9][9];
+    byte[][] updatingFields = new byte[3][3];
+    byte[][] preUpdatingCells = new byte[9][9];
+    byte[][] preUpdatingFields = new byte[3][3];
+
+
     private double[][] values = new double[9][9];
 
     public void setPlayer(byte p){
@@ -40,9 +47,9 @@ public class GameLogic {
 
     private void UpdateVariables(){     // update values
         boolean[][] start_ac = board.getAllowedCells();
-        boolean[][] updatingAllowedCells = start_ac;
-        byte[][] updatingCells = board.getCells();
-        byte[][] updatingFields = board.getFields();
+        updatingAllowedCells = start_ac;
+        updatingCells = board.getCells();
+        updatingFields = board.getFields();
         for (byte x = 0; x < 9; x++){
             for (byte y = 0; y < 9; y++){
                 if (start_ac[x][y]){   // cell is allowed
@@ -50,7 +57,7 @@ public class GameLogic {
                         values[x][y] = -1000.0d;
                     }
                     else {
-                        values[x][y] = WinFieldPossible_getVal(x,y, this.player, updatingAllowedCells, updatingCells, updatingFields);
+                        values[x][y] = WinFieldPossible_getVal(x,y, this.player);
                     }
                 }
                 else {                  // cell isn't allowed
@@ -59,15 +66,15 @@ public class GameLogic {
             }
         }
     }
-    private int WinFieldPossible_getVal(byte start_xcoord, byte start_ycoord ,byte p, boolean[][] updatingAllowedCells, byte[][] updatingCells, byte[][] updatingFields){// update values
+    private int WinFieldPossible_getVal(byte start_xcoord, byte start_ycoord ,byte p){// update values
         // player bytes:
         // 1 -> x
         // 2 -> o
         int totalVal = 0;
 
-        byte[][] preUpdatingCells = new byte[updatingCells.length][updatingCells[0].length];
+        preUpdatingCells = new byte[updatingCells.length][updatingCells[0].length];
         for (int i = 0; i < preUpdatingCells.length; i++)  for(int j = 0; j < preUpdatingCells[0].length; j++) preUpdatingCells[i][j] = updatingCells[i][j];
-        byte[][] preUpdatingFields = new byte[updatingFields.length][updatingFields[0].length];
+        preUpdatingFields = new byte[updatingFields.length][updatingFields[0].length];
         for (int i = 0; i < preUpdatingFields.length; i++)  for (int j = 0; j < preUpdatingFields[0].length; j++)   preUpdatingFields[i][j] = updatingFields[i][j];
 
         updatingCells[start_xcoord][start_ycoord] = p;
@@ -76,7 +83,7 @@ public class GameLogic {
         nextActiveField[1] = (byte)(start_ycoord % 3);
 
         if (updatingFields[start_xcoord % 3][start_ycoord % 3] == 0){    // if field isn't won by anybody
-            if (board.checkRows(start_xcoord, start_ycoord, p)){
+            if (board.checkRows(start_xcoord, start_ycoord, p, updatingCells)){
                 if (p == this.player){
                     totalVal += _ThreeValue;
                 }
@@ -112,7 +119,7 @@ public class GameLogic {
                     }
                 }
             }
-            else if (board.checkUsefulPairs(start_xcoord, start_ycoord, p)){
+            else if (board.checkUsefulPairs(start_xcoord, start_ycoord, p, updatingCells)){
                 if (p == this.player){
                     totalVal += _TwoValue;
                 }
@@ -161,10 +168,10 @@ public class GameLogic {
                         }
                         else {
                             if (p == this.player){
-                                maxVal[counter] = WinFieldPossible_getVal(x,y, this.enemyPlayer, updatingAllowedCells, updatingCells, updatingFields);
+                                maxVal[counter] = WinFieldPossible_getVal(x,y, this.enemyPlayer);
                             }
                             else if (p == this.enemyPlayer){
-                                maxVal[counter] = WinFieldPossible_getVal(x,y, this.player, updatingAllowedCells, updatingCells, updatingFields);
+                                maxVal[counter] = WinFieldPossible_getVal(x,y, this.player);
                             }
                         }
                     }
