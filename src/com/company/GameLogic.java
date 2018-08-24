@@ -82,12 +82,14 @@ public class GameLogic {
                 }
                 updatingFields[start_xcoord % 3][start_ycoord % 3] = p;
 
-                if (board.checkFieldRows(start_xcoord % 3, start_ycoord % 3, updatingFields)){
+                if (board.checkFieldRows((byte)(start_xcoord % 3), (byte)(start_ycoord % 3), p, updatingFields)){
                     if (p == this.player){
                         totalVal += 500000.0d;
+                        return totalVal;
                     }
                     else if (p == this.enemyPlayer){
                         totalVal -= 500000.0d;
+                        return totalVal;
                     }
                 }
             }
@@ -102,6 +104,20 @@ public class GameLogic {
 
 
             updatingAllowedCells = board.checkAllowedCells(updatingCells, nextActiveField);
+
+            boolean isEmpty = true;
+            for (int x = 0; x < 3; x++){
+                for (int y = 0; y < 3; y++){
+                    if (!updatingAllowedCells[(nextActiveField[0]*3)+x][(nextActiveField[1]*3)+y]){
+                        isEmpty = false;
+                        break;
+                    }
+                }
+            }
+            if (isEmpty){
+                // TODO: calculate a bit more
+                return totalVal;
+            }
 
             double[] maxVal = new double[81];
             int counter = 0;
