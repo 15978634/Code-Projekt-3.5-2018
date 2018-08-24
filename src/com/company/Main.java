@@ -17,7 +17,7 @@ private static boolean GameRunning;
     }
 
     public static void main(String[] args) {
-        url = "172.24.0.41";
+        url = "127.0.0.1";
         connectToServer(url);
         board = new Board();
         protocol = new Protocol();
@@ -43,7 +43,7 @@ private static boolean GameRunning;
             if(protocol.getId()=='I'){
                 System.out.println("Information received!");
                 board.update(protocol.getBig_board(),protocol.getCells(),protocol.getActive_field());
-                gameLogic.setPlayer(protocol.getClient_id());
+                gameLogic.setPlayer((byte)(protocol.getClient_id()+1));
                 byte [] coords = Main.calculateHighestValue();
                 xcoord = coords[0];
                 ycoord = coords[1];

@@ -65,14 +65,17 @@ public class GameLogic {
         // 2 -> o
         int totalVal = 0;
 
+        byte[][] preUpdatingCells = new byte[updatingCells.length][updatingCells[0].length];
+        for (int i = 0; i < preUpdatingCells.length; i++)  for(int j = 0; j < preUpdatingCells[0].length; j++) preUpdatingCells[i][j] = updatingCells[i][j];
+        byte[][] preUpdatingFields = new byte[updatingFields.length][updatingFields[0].length];
+        for (int i = 0; i < preUpdatingFields.length; i++)  for (int j = 0; j < preUpdatingFields[0].length; j++)   preUpdatingFields[i][j] = updatingFields[i][j];
+
         updatingCells[start_xcoord][start_ycoord] = p;
         byte[] nextActiveField = new byte[2];
         nextActiveField[0] = (byte)(start_xcoord % 3);
         nextActiveField[1] = (byte)(start_ycoord % 3);
 
         if (updatingFields[start_xcoord % 3][start_ycoord % 3] == 0){    // if field isn't won by anybody
-            // Termination conditions
-            //
             if (board.checkRows(start_xcoord, start_ycoord, p)){
                 if (p == this.player){
                     totalVal += _ThreeValue;
@@ -85,10 +88,26 @@ public class GameLogic {
                 if (board.checkFieldRows((byte)(start_xcoord % 3), (byte)(start_ycoord % 3), p, updatingFields)){
                     if (p == this.player){
                         totalVal += 500000.0d;
+
+                        updatingCells = preUpdatingCells;
+                        updatingFields = preUpdatingFields;
+                        byte[] preActiveField = new byte[2];
+                        preActiveField[0] = (byte)(start_xcoord / 3);
+                        preActiveField[1] = (byte)(start_ycoord / 3);
+                        updatingAllowedCells = board.checkAllowedCells(updatingCells, preActiveField);
+
                         return totalVal;
                     }
                     else if (p == this.enemyPlayer){
                         totalVal -= 500000.0d;
+
+                        updatingCells = preUpdatingCells;
+                        updatingFields = preUpdatingFields;
+                        byte[] preActiveField = new byte[2];
+                        preActiveField[0] = (byte)(start_xcoord / 3);
+                        preActiveField[1] = (byte)(start_ycoord / 3);
+                        updatingAllowedCells = board.checkAllowedCells(updatingCells, preActiveField);
+
                         return totalVal;
                     }
                 }
@@ -116,6 +135,14 @@ public class GameLogic {
             }
             if (isEmpty){
                 // TODO: calculate a bit more
+
+                updatingCells = preUpdatingCells;
+                updatingFields = preUpdatingFields;
+                byte[] preActiveField = new byte[2];
+                preActiveField[0] = (byte)(start_xcoord / 3);
+                preActiveField[1] = (byte)(start_ycoord / 3);
+                updatingAllowedCells = board.checkAllowedCells(updatingCells, preActiveField);
+
                 return totalVal;
             }
 
@@ -157,6 +184,13 @@ public class GameLogic {
                 totalVal += maxVal[80];
             }
 
+            updatingCells = preUpdatingCells;
+            updatingFields = preUpdatingFields;
+            byte[] preActiveField = new byte[2];
+            preActiveField[0] = (byte)(start_xcoord / 3);
+            preActiveField[1] = (byte)(start_ycoord / 3);
+            updatingAllowedCells = board.checkAllowedCells(updatingCells, preActiveField);
+
             return totalVal;
         }
         else {      // if field is won by someone
@@ -166,6 +200,14 @@ public class GameLogic {
             else if (p == this.enemyPlayer){
                 totalVal += _BigEnemyChoice;
             }
+
+            updatingCells = preUpdatingCells;
+            updatingFields = preUpdatingFields;
+            byte[] preActiveField = new byte[2];
+            preActiveField[0] = (byte)(start_xcoord / 3);
+            preActiveField[1] = (byte)(start_ycoord / 3);
+            updatingAllowedCells = board.checkAllowedCells(updatingCells, preActiveField);
+
             return totalVal;
         }
     }
