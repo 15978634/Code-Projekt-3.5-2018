@@ -17,7 +17,7 @@ private static boolean GameRunning;
     }
 
     public static void main(String[] args) {
-        url = "127.0.0.1";
+        url = "172.24.0.41";
         connectToServer(url);
         board = new Board();
         protocol = new Protocol();
@@ -37,18 +37,17 @@ private static boolean GameRunning;
         byte xcoord;
         byte ycoord;
         GameRunning = true;
-        incomingMessage = con.receiveMessage();
         while(GameRunning){
             incomingMessage = con.receiveMessage();
+            protocol.setByteArray(incomingMessage);
             if(protocol.getId()=='I'){
                 System.out.println("Information received!");
-                protocol.setByteArray(incomingMessage);
                 board.update(protocol.getBig_board(),protocol.getCells(),protocol.getActive_field());
                 gameLogic.setPlayer(protocol.getClient_id());
-
                 byte [] coords = Main.calculateHighestValue();
                 xcoord = coords[0];
                 ycoord = coords[1];
+                leavingMessage = new byte[5];
                 leavingMessage[0]='M';
                 leavingMessage[1]=(byte)0xFF;
                 leavingMessage[2]= xcoord;
@@ -59,6 +58,8 @@ private static boolean GameRunning;
             }
             if(protocol.getId()=='E'){
                 System.out.println("Error message from Server received!");
+                System.out.println(protocol.getError_code());
+
             }
             if(protocol.getId()=='W'){
                 System.out.println("Win message received");
